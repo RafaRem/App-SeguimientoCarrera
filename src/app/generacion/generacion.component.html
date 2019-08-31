@@ -1,0 +1,76 @@
+
+<div class="row  justify-content-md-center">
+    <div class="col-md-8">
+    <form #GeneralForm="ngForm">
+        <label for="carrera">Carrera</label>
+        <br>
+        <div class="form-group aling-center" > <!--SELECCION DE LA CARRERA PARA DAR DE ALTA UN PLAN DE ESTUDIO O BIEN AGREGAR MATERIAS-->
+            <select [(ngModel)]="carrera" (change)="capturar()"  required name="carrera" >                              
+                <option *ngFor="let ress of varcar" value={{ress.id}}> {{ress.nombre}} </option>
+            </select>
+            <p [hidden]="carrera == invalid">carrera seleccionada {{ carrera }}</p>
+            
+            <p>Generación que comprende el Plan de estudio</p>
+            <input type="text" [(ngModel)]="ciclo" placeholder="ejem: 2018-2019" name="ciclo" pattern="[0-9]{4}-[0-9]{4}" required maxlength="9">   
+        </div>
+      <div >
+        <br>  
+        <ul class="nav nav-tabs" id="myTab" role="tablist"  >
+            <li  class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#rpdf" role="tab" aria-controls="rpdf" aria-selected="true">Registro por PDF</a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#rmanual" role="tab" aria-controls="rmanual" aria-selected="false">Registro Manual</a>
+            </li> 
+                 
+        </ul>
+    </div> 
+    </form>  
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="rpdf" role="tabpanel" aria-labelledby="home-tab">
+                <form #PdfForm="ngForm">
+                <div class="form-group aling-center" >
+                    <p>Seleccione un archivo</p>    
+                    <input type="file" multiple [(ngModel)]="newplan" (change)="setFile($event)" name="newplan" required/>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary" (click)="analizar()" [disabled]="PdfForm.form.invalid||GeneralForm.form.invalid" > Registrar Plan de Estudio </button> 
+                    <br>
+                    <br>
+                </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="rmanual" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row  justify">
+                    <div class="col-md-8">
+                        <div class="form-group aling-center" >
+                        <br>
+                        <form #ManualForm="ngForm">
+                            <p>seleccione plan de estudia al que asignara la materia</p>
+                           
+                                <label for="planE">Plan</label>
+                                <br>
+                                <select [(ngModel)]="PlanE" (change)="capturarPlan()" name="PlanE" required >     
+                                    <option value="0">Nuevo Plan</option>                         
+                                    <option *ngFor="let rest of newplanarray" value={{rest.plan}}> {{rest.plan}} </option>  
+                                </select>
+                                <p [hidden]="PlanE == ''">Haz seleccionado el Opción Plan De Estudio {{ varplane }}</p>
+                       
+                            <p>Clave</p>
+                            <input type="text" [(ngModel)]="rclave" class="form-control" placeholder="xxxx" name="rclave" required>
+                            <p>Nobre</p>
+                            <input type="text" [(ngModel)]="rnombre" class="form-control" placeholder="Nombre de la materia" name="rnombre" required>
+                            <br>
+                            <button class="btn btn-primary" (click)="addmateria()" [disabled]="ManualForm.form.invalid||GeneralForm.form.invalid">Agregar Materia</button>
+                            <br> <br>
+                        </form>
+                        </div> 
+                    </div>         
+                </div>
+            </div>
+        </div>
+   
+    </div>
+</div>
+
+<ng4-loading-spinner> </ng4-loading-spinner>

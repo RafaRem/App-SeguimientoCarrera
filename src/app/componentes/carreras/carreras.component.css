@@ -1,0 +1,46 @@
+.cabezera{
+    height: 150px;
+    width: 100%;
+    background-color: #103F91;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.trans{
+    background-color: #103F91;
+    text-align: center;
+}
+.btn:hover{
+    background: #41A5EE !important;
+}
+.modal{
+    position: fixed;
+}
+
+.texto{
+    font-family: "Latin Modern Roman 10";
+    font-weight: 900;
+    font-size: 35px;
+    color: white;
+    text-align: justify;
+    margin-left: 40%;
+}
+
+a{
+    background-color: #103F91;
+    color: white;
+}
+a .active{
+    color: black !important;
+}
+
+.modal-header{
+    background-color: #103F91;
+    color: white;
+}
+.modal-footer{
+    background-color: slategray;
+    color: white;
+}

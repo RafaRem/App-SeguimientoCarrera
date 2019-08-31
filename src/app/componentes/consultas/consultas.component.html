@@ -1,0 +1,214 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Lista de Reprobación</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row  justify-content-md-center" >
+      <div class="col-md-12" *ngFor="let ress of alumnosrep">
+          <div class="card">
+          <div class="card-body" aria-describedby="button-addon4">
+              {{ress}} 
+              </div>
+            </div>
+      </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      
+      <img src="../../../assets/uascontrol.png" class="rounded float-right" alt="...">
+   </div>
+  </div>
+</div>
+</div>
+<div class="row  justify-content-md-center">
+  <div class="col-md-8">
+    <br>
+    <br>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" (click)="limpiar()" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Alumno</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="limpiar()" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Materia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="limpiar()" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Generación</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" (click)="limpiar()" id="mejor-tab" data-toggle="tab" href="#mejor" role="tab" aria-controls="contact" aria-selected="false">Mejor Promedio</a>
+          </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <br>
+            <form #MatForm="ngForm">   
+            <label for="datamatricula">Matricula del alumno</label><br>
+            <div class="input-group col-md-8">
+                <div class="input-group-prepend">
+                    <span><img class="imagenn" src="../../../assets/id.png" alt="">  </span>
+                </div>
+                    <input type="text" name="datamatricula" [(ngModel)]="datamatricula" required pattern="[0-9]{7}-[0-9]"><br>
+            </div>
+            <br>
+            <button class="btn btn-primary" (click)="promedioxalumno()" [disabled]="MatForm.form.invalid"> Promedio por alumno </button>
+          </form>
+          </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <form #ClaveForm="ngForm"> 
+            <br>
+            <label for="mcarrera">carrera*</label>                
+            <div class="input-group col-md-8">
+                <div class="input-group-prepend">
+                  <span><img class="imagenn" src="../../../assets/mortarboard.png" alt="">  </span>
+            <select [(ngModel)]="mcarrera"  class="form-control" name="carrera" (change)="mcapturar()" required>
+                    <option *ngFor="let ress of varcar" value={{ress.id}}> {{ress.nombre}}</option>
+            </select>
+            </div>
+            </div>
+              <p [hidden]="carrera == ''">Haz seleccionado la carrera  {{ carrera }}</p>
+              <br>
+              <label for="mgen">Generación*</label> 
+              <div class="input-group col-md-8">
+                  <div class="input-group-prepend">
+                    <span><img class="imagenn" src="../../../assets/ciclo.png" alt="">  </span>
+              <select [(ngModel)]="mgen"  class="form-control" name="mgen" (change)="cargarPlan()" required>
+                  <option *ngFor="let ress of arraygen" value={{ress.generacion}}> {{ress.generacion}}</option>
+              </select>
+              </div>
+              </div>
+              <br>
+              <label for="clavemat">Materia solicitada*</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span><img class="imagenn" src="../../../assets/class.png" alt="">  </span>  
+                  <ng-select class="custom" [(ngModel)]="clavemat" name="clavemat"  [items]="varmateria"  
+                    bindLabel="nombre" 
+                    bindValue="clave"
+                    required pattern="[0-9]{4}" maxlength="4">   
+                  </ng-select>
+              </div>
+            </div>
+          <br>
+          <button class="btn btn-primary" (click)="promedioxmateria()" [disabled]="ClaveForm.form.invalid"> Promedio por materia </button> 
+        </form>  
+        </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <br>
+            <form #GenForm="ngForm">
+              
+              <label for="carrera">carrera*</label>                
+              <div class="input-group col-md-8">
+                  <div class="input-group-prepend">
+                      <span><img class="imagenn" src="../../../assets/mortarboard.png" alt="">  </span>
+                    <select [(ngModel)]="carrera"  class="form-control" name="carrera" (change)="capturar()" required>
+                          <option *ngFor="let ress of varcar" value={{ress.id}}> {{ress.nombre}}</option>
+                    </select>
+                  </div>
+              </div>
+              
+              <p [hidden]="carrera == ''">Haz seleccionado la carrera  {{ carrera }}</p>
+              <br>
+              <label for="gen">Generación*</label>
+            <div class="input-group col-md-8">
+                <div class="input-group-prepend">
+                  <span><img class="imagenn" src="../../../assets/ciclo.png" alt="">  </span>
+                  <select [(ngModel)]="gen"  class="form-control" name="gen" (change)="capturar()" required>
+                      <option *ngFor="let ress of arraygengen" value={{ress.generacion}}> {{ress.generacion}}</option>
+                  </select>
+                </div>
+            </div>
+              <br>
+              
+              <button class="btn btn-primary" (click)="promedioxgeneracion()"  [disabled]="GenForm.form.invalid"> Promedio por generacion </button> 
+            </form>
+          </div>
+          <div class="tab-pane fade show" id="mejor" role="tabpanel" aria-labelledby="mejor-tab">
+            <br>
+            <form #mejorForm="ngForm">
+            <label for="carrera">carrera*</label>
+            <div class="input-group col-md-8">
+              <div class="input-group-prepend">
+                <span><img class="imagenn" src="../../../assets/mortarboard.png" alt="">  </span>
+                             
+              <select [(ngModel)]="mjrcarrera"  class="form-control" name="mjrcarrera" (change)="mjrcapturar()" required>
+                    <option *ngFor="let ress of varcar" value={{ress.id}}> {{ress.nombre}}</option>
+            </select>
+            </div>
+            </div>
+              <p [hidden]="carrera == ''">Haz seleccionado la carrera  {{ carrera }}</p>
+              <br>
+              <label for="gen">Generación*</label>
+              <div class="input-group col-md-8">
+                  <div class="input-group-prepend">
+                    <span><img class="imagenn" src="../../../assets/ciclo.png" alt="">  </span>    
+              <select [(ngModel)]="mjrgen"  class="form-control custom2" name="mjrgen" (change)="mjrcapturar()" required>
+                  <option *ngFor="let ress of arraygengen" value={{ress.generacion}}> {{ress.generacion}}</option>
+              </select>
+              </div>
+              </div>
+              <br>
+              <button class="btn btn-primary" (click)="mejorpromedio()"  [disabled]="mejorForm.form.invalid"> Mejor Promedio </button> 
+            </form>
+          </div>
+        </div>
+      <div class="form-group">
+       
+          <br>
+          <br>
+         
+              <div *ngIf="promedio>0" class="card border-primary mb-3" style="max-width: 80%;">
+                  <div class="card-header border-primary" style="background-color: blue !important" >{{procesados}}</div>
+                  <div class="card-body text-success" style="text-align: center">
+                      <span [hidden]="activate != 'star'"><img class="imagenn" src="../../../assets/star.png" alt="">  </span>
+                      <span [hidden]="activate != 'group'"><img class="imagenn"  src="../../../assets/group.png" alt="">  </span>
+                      <span [hidden]="activate != 'mejor'"><img class="imagenn"  src="../../../assets/win.png" alt="">  </span>
+                      <h2 class="card-title" style="color: black !important">Promedio: {{promedio}}</h2>           
+                      <div *ngIf="pasaron!=null; "><div style="text-align:center;" class="list-group-item list-group-item-action list-group-item-success" >{{pasaron}}</div></div>
+                      <div *ngIf="reprobados!= null;"><div style="text-align:center;"  data-toggle="modal" data-target="#exampleModal" class="list-group-item list-group-item-action list-group-item-danger">{{reprobados}}</div></div>
+                      <div *ngIf="materiarep!= null;" [hidden]="activate != 'group'"><div style="text-align:center;"  data-toggle="modal" data-target="#exampleModal" class="list-group-item list-group-item-action list-group-item-warning">Materia con mayor indice de Reprobación <br>{{materiarep}}</div></div>
+                  </div>
+                  <div class="card-footer border-primary" style="background-color: blue !important"></div>
+            
+                </div>
+           <div *ngIf="promedio>0" class="card border-primary mb-3" style="max-width: 80%;">
+              <mat-accordion>
+                  <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        CALIFICACIÓN POR SEMESTRE
+                      </mat-expansion-panel-header>
+                      <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">SEMESTRE</th>
+                              <th scope="col">PROMEDIO</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of semestres; let i = index">
+                              <th scope="row" >{{i + 1}}</th>
+                              <td >{{item}}</td>
+                            </tr>
+                            
+                          </tbody>
+                        </table>
+                    </mat-expansion-panel>
+                    <!--------------------------------------------------->
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header (click)="CrearGrafica()">
+                          GRAFICA
+                        </mat-expansion-panel-header>
+                     
+                        <div class="row  justify-content-md-center"> <canvas id="lineChart" ></canvas> </div>
+                      </mat-expansion-panel>
+              </mat-accordion>
+          </div>
+   </div>
+  </div>
+  </div>

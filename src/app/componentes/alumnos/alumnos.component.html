@@ -1,0 +1,54 @@
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+    <h4>Seleccione una Carrera</h4>
+    <div class="input-group col-md-8">
+    <div class="input-group-prepend">
+        <span><img class="imagenn" src="../../../assets/mortarboard.png" alt="">  </span>
+    </div>
+    <select class="custom-select" [(ngModel)]="lic" (change)="capturar()">   
+        <img src="../../../assets/mortarboard.png" width="30" height="30" alt="">                           
+        <option *ngFor="let ress of varcar" value={{ress.id}}> {{ress.nombre}} </option>
+    </select>
+   </div>
+
+    <br> <br>
+    <!--<p [hidden]="PlanE == ''">Haz seleccionado el Opción Plan De Estudio {{ varplane }}</p>-->
+    <h4>Seleccione plan de estudio</h4>
+    <div class="input-group col col-md-8">
+        <div class="input-group-prepend">
+            <span><img class="imagenn" src="../../../assets/books.png" alt="">  </span>
+        </div>    
+    <select class="custom-select " [(ngModel)]="PlanE" (change)="capturarPlan()">                              
+            <option *ngFor="let rest of newplan" value={{rest.plan}}> {{rest.plan}} </option>          
+    </select>
+    </div>
+    <br> <br>
+    <input type="file" multiple (change)="setFile($event)"/>
+    <button class="btn btn-primary" (click)="procesarpdf()" [disabled]="!this.PlanE || !this.file" > Cargar Archivos </button> 
+    <br>
+    <br>
+    <button style="margin-left:5px;" class="btn btn-primary" (click)="insert()" [disabled]="!this.activador"> Almaenar datos </button> 
+</div>
+</div>
+<br>
+<br>
+<div class="row justify-content-center">
+    <div class="col-md-6"><h4>{{cantalum}}</h4></div>
+</div>
+<br>
+<div class="row justify-content-center" [hidden]="!this.activador"> 
+<div class="scroll col-md-6">
+<div class="col col-md-12" *ngFor="let ress of estudiante">
+    <div class="card">
+        <div class="card-body">
+          {{ress.nombre}}-{{ress.matricula}}
+        </div>
+      </div>
+<br>
+</div>
+</div>
+</div>
+<br>
+<ng4-loading-spinner> </ng4-loading-spinner>
+

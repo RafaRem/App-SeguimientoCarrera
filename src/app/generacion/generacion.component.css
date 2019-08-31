@@ -1,0 +1,33 @@
+.cabezera{
+    height: 150px;
+    width: 100%;
+    background-color: #103F91;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.texto{
+    font-family: "Latin Modern Roman 10";
+    font-weight: 900;
+    font-size: 35px;
+    color: white;
+    text-align: left;
+}
+
+a{
+    background-color: #103F91;
+    color: white;
+}
+a .active{
+    color: black !important;
+}
+.ng-valid[required], .ng-valid.required  {
+    border-left: 6px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form):not(.ng-untouched)  {
+    border-left: 6px solid #a94442; /* red */
+} 
+

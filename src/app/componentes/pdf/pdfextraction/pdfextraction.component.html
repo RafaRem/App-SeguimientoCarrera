@@ -1,0 +1,134 @@
+
+<div class="row justify-content-md-center">
+
+    <div class="col-md-6">
+        
+            <input type="file" multiple (change)="setFile($event)"/>
+            <button class="btn btn-primary" (click)="insertar()"> Cargar Archivos </button>
+      
+        
+        <mat-accordion>
+    
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+               1- Primer semestre
+              </mat-expansion-panel-header>
+          
+              <div *ngFor="let ress of s1">
+                <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+              </div>
+          
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                2- Segundo semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s2">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+                </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                3- Tercer semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s3">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+                </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                4- Cuarto semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s4">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+                </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                5- Quinto semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s5">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+                </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                6- Sexto semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s6">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+                </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                7- Septimo semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s7">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+                </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                8- Octavo semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s8">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+                </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                9- Noveno semestre
+              </mat-expansion-panel-header>
+              
+              <div *ngFor="let ress of s9">
+                  <p>{{ress.clave}} {{ress.nombre}} {{ress.cal}}</p>
+              </div>
+          
+            </mat-expansion-panel>
+          
+          </mat-accordion>
+    </div>
+    
+      <div class="col-md-auto">
+        
+        <div class="form-group">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5>{{est.nombre}}</h5>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Informcaión Extraida del Kardex</h5>
+                  <h5 class="card-text">Facultad: </h5>
+                  <p class="card-text">{{est.facultad}}</p>
+                  <h5 class="card-text">Universidad:</h5>
+                  <p class="card-text">{{est.universidad}}</p>
+                  <h5 class="card-text">Carrera:</h5>
+                  <p class="card-text">{{est.carrera}}</p>
+                  <h5 class="card-text">Ciclo: {{est.ciclo}}</h5>
+                  <a href="#" class="btn btn-primary" (click)="insert()">Almacenar y continuar</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Sursum Versus
+                </div>
+              </div>
+       
+        </div>
+      </div>
+    
+    </div>
+    

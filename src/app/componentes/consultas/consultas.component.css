@@ -1,0 +1,68 @@
+.yes{
+    background-color: green;
+    color: white;
+    text-align: center;
+    size: 25px;
+}
+.no{
+    background-color: red;
+    color: white;
+    text-align: center;
+    size: 25px;
+}
+.btn:hover{
+    background: #41A5EE !important;
+}
+
+.custom{
+    width: 25rem;
+}
+.custom2{
+    width: 10rem;
+}
+.modal-header{
+    background-color: red;
+    color: white;
+}
+.modal-footer{
+    background-color: slategray;
+    color: white;
+}
+.cabezera{
+    height: 150px;
+    width: 100%;
+    background-color: #103F91;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.texto{
+    font-family: "Latin Modern Roman 10";
+    font-weight: 900;
+    font-size: 35px;
+    color: white;
+    text-align: center;
+}
+
+a{
+    background-color: #103F91;
+    color: white;
+}
+a .active{
+    color: black !important;
+}
+
+.tab-content{
+    border-color: #103F91 !important;
+
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 6px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form):not(.ng-untouched)  {
+    border-left: 6px solid #a94442; /* red */
+}  
